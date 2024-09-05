@@ -1,0 +1,5 @@
+*.env
+default.sqlite
+*.zip
+*.tsz
+*.jsonl
