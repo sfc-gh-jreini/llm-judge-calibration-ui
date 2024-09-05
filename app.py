@@ -1,28 +1,18 @@
-import streamlit as st 
-import pandas as pd
+import streamlit as st
 import time
+from dotenv import load_dotenv
 from typing import Tuple
-from trulens.core import Feedback
 from trulens.providers.openai import OpenAI as OpenAIProvider
+from trulens.feedback import GroundTruthAggregator
+from trulens.core import TruSession
 from trulens.benchmark.benchmark_frameworks.dataset.beir_loader import (
     TruBEIRDataLoader,
 )
 from trulens.benchmark.benchmark_frameworks.tru_benchmark_experiment import (
-    BenchmarkParams,
+    BenchmarkParams, TruBenchmarkExperiment, create_benchmark_experiment_app,
 )
-from trulens.benchmark.benchmark_frameworks.tru_benchmark_experiment import (
-    TruBenchmarkExperiment,
-)
-from trulens.benchmark.benchmark_frameworks.tru_benchmark_experiment import (
-    create_benchmark_experiment_app,
-)
-from trulens.feedback import GroundTruthAggregator
-
-from dotenv import load_dotenv
 
 load_dotenv()
-
-from trulens.core import TruSession
 
 session = TruSession()
 
@@ -182,7 +172,7 @@ def wizard_form_body():
                                      x_label=f"Calibration Score on {st.session_state['dataset_name']}", y_label=f"metric",
                                      width=700, height=500, use_container_width=False, horizontal=True)
             
-                display_grouped_bar_chart(st.session_state['results'])
+            display_grouped_bar_chart(st.session_state['results'])
     
     form_footer_cols = st.columns([5,1,1])
     

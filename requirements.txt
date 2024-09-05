@@ -1,3 +1,6 @@
 streamlit
-streamlit-aggrid
 streamlit-lottie
+trulens
+trulens-providers-openai
+openai
+
